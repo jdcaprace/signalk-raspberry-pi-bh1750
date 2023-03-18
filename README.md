@@ -9,6 +9,8 @@ Personally I am using the sensor found at the following link on Amazon. However 
 
 Learn more: https://www.amazon.com/HiLetgo-GY-302-BH1750-Intensity-Illumination/dp/B00M0F29OS/
 
+![bh1750](../main/bh1750.png)
+
 ### Connecting the Sensor
 All you need are pins 1 (3.3V Power), 3 (I2C1 SDA), 5 (I2C1 SCL) and 9 (GND). You need to connect these pins to VIN, SDA, SCL and GND pins of the BME module respectively. You need to make sure Raspberry Pi is turned off while doing this!
 
