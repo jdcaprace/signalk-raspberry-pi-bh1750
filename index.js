@@ -72,8 +72,8 @@ module.exports = function (app) {
 
     // Read BH1750 sensor data
     function readSensorData() {
-  	  let data = bh1750.readData()
-      .then(() => {
+  	  let data = bh1750.readData();
+      console.log(data);
         // light intensity is returned.
         lightintensity = data;
 
@@ -82,13 +82,8 @@ module.exports = function (app) {
         // create message
         var delta = createDeltaMessage(lightintensity)
 
-        // send temperature
+        // send light intensity
         app.handleMessage(plugin.id, delta)
-
-      })
-      .catch((err) => {
-        console.log(`BH1750 read error: ${err}`);
-      });
     }
 
     bh1750.init()
