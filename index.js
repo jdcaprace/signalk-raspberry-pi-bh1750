@@ -72,8 +72,8 @@ module.exports = function (app) {
 
     // Read BH1750 sensor data
     function readSensorData() {
-  	  bh1750.readData()
-          .then((data) => {
+  	  let data = bh1750.readData()
+      .then(() => {
         // light intensity is returned.
         lightintensity = data;
 
