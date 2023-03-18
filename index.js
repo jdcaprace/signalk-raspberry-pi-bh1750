@@ -1,5 +1,5 @@
 
-const BH1750 = require('bh1750')
+const BH1750 = require('bh1750-sensor')
 
 module.exports = function (app) {
   let timer = null
@@ -63,32 +63,19 @@ module.exports = function (app) {
     // The BH1750 constructor options are optional.
     //
     const bh1750options = {
-      //i2cBusNo   : options.i2c_bus || 1, // defaults to 1
-      device: '/dev/i2c-1',
-      address : Number(options.i2c_address || '0x23'), // defaults to 0x77
-      lenght:2,
-      command: 0x10
-    };
-
-    // 0x00 - No active state
-    // 0x01 - Wating for measurment command
-    // 0x07 - Reset data register value - not accepted in POWER_DOWN mode
-    // 0x10 - Start measurement at 1lx resolution. Measurement time is approx 120ms.
-    // 0x11 - Start measurement at 0.5lx resolution. Measurement time is approx 120ms.
-    // 0x13 - Start measurement at 4lx resolution. Measurement time is approx 16ms.
-    // 0x20 - Start measurement at 1lx resolution. Measurement time is approx 120ms. Device is automatically set to Power Down after measurement.
-    // 0x21 - Start measurement at 0.5lx resolution. Measurement time is approx 120ms. Device is automatically set to Power Down after measurement.
-    // 0x23 - Start measurement at 1lx resolution. Measurement time is approx 120ms. Device is automatically set to Power Down after measurement.
- 
+      i2cBusNo   : options.i2c_bus || 1, // defaults to 1
+      i2cAddress : Number(options.i2c_address || '0x23'), // defaults to 0x23
+      readMode: BH1750.ONETIME_H_RESOLUTION_MODE
+    };  
 
     const bh1750 = new BH1750(bh1750options);
 
     // Read BH1750 sensor data
     function readSensorData() {
-  	  bh1750.readSensorData()
+  	  bh1750.readData()
           .then((data) => {
         // light intensity is returned.
-        lightintensity = data.lightintensity;
+        lightintensity = data;
 
         console.log(`data = ${JSON.stringify(data, null, 2)}`);
 
