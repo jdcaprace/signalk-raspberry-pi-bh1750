@@ -86,13 +86,6 @@ module.exports = function (app) {
         app.handleMessage(plugin.id, delta)
     }
 
-    bh1750.init()
-        .then(() => {
-      console.log('BH1750 initialization succeeded');
-      readSensorData();
-    })
-    .catch((err) => console.error(`BH1750 initialization failed: ${err} `));
-
     timer = setInterval(readSensorData, options.rate * 1000);
   }
 
