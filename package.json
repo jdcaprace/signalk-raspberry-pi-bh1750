@@ -1,0 +1,25 @@
+{
+  "name": "signalk-raspberry-pi-bh1750",
+  "author": "Jean-David Caprace",
+  "description": "SignalK node server plugin that reads data from bh1750 light sensor on Raspberry-Pi",
+  "license": "MIT",
+  "homepage": "https://github.com/jdcaprace/signalk-raspberry-pi-bh1750#readme",
+  "version": "0.0.1",
+  "main": "index.js",
+  "keywords": [
+    "signalk-node-server-plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdcaprace/signalk-raspberry-pi-bh1750.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jdcaprace/signalk-raspberry-pi-bh175/issues"
+  },
+  "dependencies": {
+    "bh1750": "0.0.5"
+  },
+  "scripts": {
+    "test": "echo \"No test specified\""
+  }
+}
